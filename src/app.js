@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import "./app.css";
-import Tabirri from "./tabiri/tabiri";
-
+import Forecast from "./components/forecast";
 const App = () => {
-  const mguu = styled.footer`
+  const Mguu = styled.footer`
     background-color: grey;
     position: fixed;
     bottom: 0;
@@ -13,14 +12,13 @@ const App = () => {
   `;
   return (
     <div>
-      {/* <input placeholder="Enter your city"></input> */}
-      {/* <button style={{ textAlign: "center" }}>Get Forecast</button> */}
       <main>
-        <Tabirri />
+        <h1>WEATHER APP</h1>
+        <Forecast />
       </main>
-      <footer>
+      <Mguu>
         Page created by <a href="##"> @kimutai</a>
-      </footer>
+      </Mguu>
     </div>
   );
 };
