@@ -1,5 +1,5 @@
 //using the state hook
-import react, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 const Input = styled.input`
   border: none;
@@ -19,6 +19,7 @@ const Button = styled.button`
 
 const Forecast = () => {
   const APIKEY = "7e23a3dc74fc86b89fba3917d84b6ebf";
+  // const URL ="api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}"
   //react state hook
   const [city, setCity] = useState("");
   //I need to learn about forms and then how apis work
@@ -26,11 +27,23 @@ const Forecast = () => {
   //  //the reason I get frustrated is because I code without understanding and I'm too proud and lazy to search
   const handleChange = (e) => {
     setCity(e.target.value);
-    console.log(" change:", city);
+    // console.log(" change:", e.target.value);
+    //why is city != e.target.value?
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(" submit:", city);
+    fetch(
+      //if https is not used, it returns Uncaught (in promise) SyntaxError: Unexpected token < in JSON at position 0
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}`
+    )
+      .then((res) => {
+        if (!res.ok) {
+          console.log("city not found!");
+        }
+        res.json();
+      })
+      .then((data) => console.log(data));
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -42,7 +55,7 @@ const Forecast = () => {
         onChange={handleChange}
       />
       <br />
-      <Button>Get Forecast</Button>
+      <Button type="submit">Get Forecast</Button>
     </form>
   );
 };
