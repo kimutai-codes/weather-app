@@ -2,13 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import "./app.css";
 import Forecast from "./components/forecast";
-const Footer = styled.footer`
-  background-color: grey;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-`;
+// const Footer = styled.footer`
+//   background-color: rgba(24, 26, 27, 0.2);
+//   // position: fixed;
+//   width: 100%;
+//   height: 40px;
+// `;
 
 const App = () => {
   return (
@@ -17,9 +16,9 @@ const App = () => {
         <h1>WEATHER APP</h1>
         <Forecast />
       </main>
-      <Footer>
-        Page created by <a href="##"> @kimutai</a>
-      </Footer>
+      {/* <Footer> */}
+      {/*   Page created by <a href="##"> @kimutai</a> */}
+      {/* </Footer> */}
     </div>
   );
 };

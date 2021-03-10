@@ -1,7 +1,16 @@
 //using the state hook
-import { useState } from "react";
+import react, { useState } from "react";
 import styled from "styled-components";
 import Display from "./display";
+import Main from "./main";
+import Dashboard from "./dashboard";
+
+const Span = styled.div`
+  // display: grid;
+  // grid-template-columns: auto auto;
+  width: 50%;
+  margin: 0 auto;
+`;
 
 const Input = styled.input`
   border: none;
@@ -62,7 +71,7 @@ const Forecast = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKEY}`
     );
     const data = await res.json();
     console.log(data);
@@ -86,7 +95,14 @@ const Forecast = () => {
         <br />
         <Button type="submit">Get Forecast</Button>
       </form>
-      {weather.name !== undefined ? <Display weth={weather} /> : null}
+      {/* {weather.name !== undefined ? <Display weth={weather} /> : null} */}
+      {weather.name !== undefined ? (
+        <Span>
+          <Display weth={weather} />
+          <Main weth={weather} />
+          <Dashboard weth={weather} />
+        </Span>
+      ) : null}
     </div>
   );
 };

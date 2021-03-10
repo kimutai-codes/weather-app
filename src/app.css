@@ -1,5 +1,11 @@
+* {
+  box-sizing: border-box;
+  position: relative;
+  /* border: 2px dotted rgb(96, 139, 168); */
+}
 body {
   background-color: lightcyan;
   text-align: center;
   font-family: "Nunito", sans-serif;
+  margin-top: 0;
 }
