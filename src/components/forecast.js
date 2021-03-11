@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Display from "./display";
 import Main from "./main";
 import Dashboard from "./dashboard";
+import CityNotFound from "./cityNotFound";
 
 const Span = styled.div`
   // display: grid;
@@ -67,20 +68,20 @@ const Forecast = () => {
   //
   //why does the following work and not the other one
   //I think it's because in the code bellow, we declare variables asum'
-
   async function handleSubmit(e) {
     e.preventDefault();
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKEY}`
     );
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     // setWeather({
     //   data: data,
     // });
     setWeather(data);
     return data;
   }
+  console.log(weather);
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -96,13 +97,15 @@ const Forecast = () => {
         <Button type="submit">Get Forecast</Button>
       </form>
       {/* {weather.name !== undefined ? <Display weth={weather} /> : null} */}
-      {weather.name !== undefined ? (
+      {weather.name !== undefined && city !== "" ? (
         <Span>
           <Display weth={weather} />
           <Main weth={weather} />
           <Dashboard weth={weather} />
         </Span>
-      ) : null}
+      ) : (
+        <CityNotFound />
+      )}
     </div>
   );
 };
