@@ -1,7 +1,7 @@
 # This is what this project has taught me
 
 ## 1. Working with Apis
-this includes, fetch,async-await-promisses and Http requests
+this includes, fetch,async-await,promisses and Http requests
 
 ## 2. Conditional Rendering
 React conditional rendering, esp using ternary operator .So powerful.I even rendered a span which nested three components.I dont know if it can cause problems, but for now, it works great
